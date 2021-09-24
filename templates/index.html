@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Digital Diary</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
+</head>
+
+<body>
+
+    <script src="/static/index.js"></script>
+   
+    <div class="bg"
+        style="color: #FFF; background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%),url(./static/assets/bg/bg-emoji.png); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+
+        <!--App Name-->
+        <div class=" container-fluid text-center" style="background-color: #4C56AF; font-family: cursive; height: 8vh;">
+            <h1>Digital Diary</h1>
+        </div>
+
+        <!--Day and Date-->
+        <div class="text-left mb-2" style="background-color: #263088; font-family: cursive; width: 100%; height: 3vh;">
+            <p>{{Date_Today}}</p>
+        </div>
+
+        <!--Input New Entry and Detect Emotion-->      
+        <div class="container-fluid" style=" height: 25vh;">
+            <div style=" color:black; font-family: cursive; width: 100%;">
+                <textarea class="form-control" id="text" name="text_input" rows="4" maxlength="200"
+                    placeholder="How was your day?"></textarea>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-6 text-left">
+                    <button class="btn btn-lg" id="predict_button" type="submit" name="submit_b" value="submit_p"
+                        style="color:white; background-color: #4C56AF; font-family: cursive; ">Predict
+                        Emotion</button>
+                </div>
+
+                <div class="col-6 text-right ">
+                    <button class="btn btn-lg" id="save_button" type="submit" name="submit_b" value="submit_s"
+                        style="color:white; background-color: #4C56AF; font-family: cursive; ">Save This
+                        Entry</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!--Predicted Emotion-->
+        <div class="container-fluid" id="prediction_container" style="color:black; font-family: cursive; font-size:20px; height: 20vh;">
+            <p id="prediction"  style="display: none">{{Predicted_Emotion}}</p>
+            <img id="emo_img_url" src="{{predicted_emotion_img_url}}" width="55" height="50" alt="" style="display: none">             
+        </div>
+
+        <!--Your Entries Columns-->
+        <div class="container-fluid text-left " style="height: 40vh ">
+
+            <div class="row"
+                style="background-color: #263088; color: #FFF; font-family: cursive; font-size: larger; height: 4vh ">
+                <p>Your Entries :)</p>
+            </div>
+
+            <div class="row row-col-3"
+                style="background-color: #4C56AF; color: #000; font-family: cursive; height: 35vh ">
+
+                <div class="col mt-2 mb-2 ml-2 border rounded" style=" background-color: white;height: 33vh">
+                    <h4>{{Date1}}</h4>
+                    <p>{{Entry1}}</p>
+                    <img src="{{emotion_img_url_1}}" width="55" height="50" alt="">
+                    <p>{{Emotion1}}</p>
+                </div>
+
+                <div class="col mt-2 mb-2 ml-2 border rounded" style=" background-color: white ; height: 33vh">
+                    <h4>{{Date2}}</h4>
+                    <p>{{Entry2}}</p>
+                    <img src="{{emotion_img_url_2}}" width="55" height="50" alt="">
+                    <p>{{Emotion2}}</p>
+                </div>
+
+                <div class="col mt-2 mb-2 ml-2 mr-2 border rounded" style="background-color: white ; height: 33vh">
+                    <h4>{{Date3}}</h4>
+                    <p>{{Entry3}}</p>
+                    <img src="{{emotion_img_url_3}}" width="55" height="50" alt="">
+                    <p>{{Emotion3}}</p>
+                </div>
+
+            </div>
+            <div class="row" style="background-color: #263088;height: 4vh ">
+            </div>
+        </div>
+
+
+        <!--End-->
+    </div>
+
+</body>
+
+</html>
