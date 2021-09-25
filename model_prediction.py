@@ -9,7 +9,7 @@ from tensorflow.keras.models import load_model
 emo_code_url = {
     "empty": [0, "./static/assets/emoticons/Empty.png"],
     "sadness": [1, "./static/assets/emoticons/Sadness.png"],
-    "enthusiasm": [2, "./static/assets/emoticons/Enthusiasm.png"],
+    "enthusiasm": [2, "./static/assets/emoticons/Enthusiastic.png"],
     "neutral": [3, "./static/assets/emoticons/Neutral.png"],
     "worry": [4, "./static/assets/emoticons/Worry.png"],
     "surprise": [5, "./static/assets/emoticons/Surprise.png"],
