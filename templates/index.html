@@ -5,35 +5,32 @@
     <title>Digital Diary</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  
 </head>
 
-<body>
+<body style="overflow-y: hidden;">
 
     <script src="/static/index.js"></script>
-   
+
     <div class="bg"
         style="color: #FFF; background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%),url(./static/assets/bg/bg-emoji.png); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-
         <!--App Name-->
-        <div class=" container-fluid text-center" style="background-color: #4C56AF; font-family: cursive; min-height: 8vh;">
+        <div class=" container-fluid text-center"
+            style="background-color: #4C56AF; font-family: cursive; min-height: 8vh;">
             <h1>Digital Diary</h1>
         </div>
 
         <!--Day and Date-->
-        <div class="text-left mb-2" style="background-color: #263088; font-family: cursive; width: 100%; min-height: 3vh;">
+        <div class="text-left mb-2"
+            style="background-color: #263088; font-family: cursive; width: 100%; min-height: 3vh;">
             <p id="display_date">Date</p>
         </div>
 
-        <!--Input New Entry and Detect Emotion-->      
+        <!--Input New Entry and Detect Emotion-->
         <div class="container-fluid" style=" min-height: 25vh;">
             <div style=" color:black; font-family: cursive; width: 100%;">
                 <textarea class="form-control" id="text" name="text_input" rows="4" maxlength="200"
@@ -57,50 +54,31 @@
         </div>
 
         <!--Predicted Emotion-->
-        <div class="container-fluid" id="prediction_container" style="color:black; font-family: cursive; font-size:20px; min-height: 20vh;">
-            <p id="prediction"  style="display: none">{{Predicted_Emotion}}</p>
-            <img id="emo_img_url" src="{{predicted_emotion_img_url}}" width="55" min-height="50" alt="" style="display: none">             
+        <div class="container-fluid" id="prediction_container"
+            style="color:black; font-family: cursive; font-size:20px; min-height: 20vh;">
+            <p id="prediction" style="display: none"></p>
+            <img id="emo_img_url" src="" width="55" min-height="50" alt="" style="display: none">
         </div>
-
         <!--Your Entries Columns-->
         <div class="container-fluid text-left " style="min-height: 40vh ">
-
             <div class="row"
                 style="background-color: #263088; color: #FFF; font-family: cursive; font-size: larger; min-height: 4vh ">
                 <p>Your Entries :)</p>
             </div>
-
             <div class="row row-col-3"
                 style="background-color: #4C56AF; color: #000; font-family: cursive; min-height: 35vh ">
-
-                <div class="col mt-2 mb-2 ml-2 border rounded" style=" background-color: white;min-height: 33vh">
-                    <h4>{{Date1}}</h4>
-                    <p>{{Entry1}}</p>
-                    <img src="{{emotion_img_url_1}}" width="55" min-height="50" alt="">
-                    <p>{{Emotion1}}</p>
-                </div>
-
+                {% for entry in entries %}
                 <div class="col mt-2 mb-2 ml-2 border rounded" style=" background-color: white ; min-height: 33vh">
-                    <h4>{{Date2}}</h4>
-                    <p>{{Entry2}}</p>
-                    <img src="{{emotion_img_url_2}}" width="55" min-height="50" alt="">
-                    <p>{{Emotion2}}</p>
+                    <h4>{{entry["date"]}}</h4>
+                    <p>{{entry["entry"]}}</p>
+                    <img src="{{entry['emotion_url']}}" width="55" min-height="50" alt="">
+                    <p>{{entry["emotion"]}}</p>
                 </div>
-
-                <div class="col mt-2 mb-2 ml-2 mr-2 border rounded" style="background-color: white ; min-height: 33vh">
-                    <h4>{{Date3}}</h4>
-                    <p>{{Entry3}}</p>
-                    <img src="{{emotion_img_url_3}}" width="55" min-height="50" alt="">
-                    <p>{{Emotion3}}</p>
-                </div>
-
+                {% endfor %}
             </div>
             <div class="row" style="background-color: #263088;min-height: 4vh ">
             </div>
         </div>
-
-
-        <!--End-->
     </div>
 
 </body>
